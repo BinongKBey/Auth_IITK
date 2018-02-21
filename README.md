@@ -17,3 +17,8 @@ You can setup a python Daemon
 
 Now it will login automatically when you start your laptop
 
+In case of suspending and hibernation
+
+sudo cp IITK-resume.service /etc/systemd/system/
+
+sudo systemctl enable IITK-resume.service
