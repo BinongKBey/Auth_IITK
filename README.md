@@ -14,16 +14,16 @@ you can run auth-iitk.py which will login you and keep your connection active
 Alternate Once for all -
 You can setup a python Daemon
 
-###1) install supervisor by typing
+### 1) install supervisor by typing
 ```sudo apt-get install supervisor```
 
-###2) copy auth-iitk.py to 
+### 2) copy auth-iitk.py to 
 ``` sudo cp auth-iitk.py /opt ```
 
-###3) copy auth-iitk.conf to /etc/supervisor/conf.d/
+### 3) copy auth-iitk.conf to /etc/supervisor/conf.d/
 ``` sudo cp auth-iitk.conf /etc/supervisor/conf.d/ ```
 
-###4) update supervisor list -- 
+### 4) update supervisor list -- 
 ```sudo supervisorctl update```
 
 Now it will login automatically when you start your laptop
