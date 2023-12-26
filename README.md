@@ -1,4 +1,7 @@
 # auth-iitk
+
+New updated code for auto login to IITK network
+
 you need to install *bs4*, for installation just open your command prompt/ terminal, type -
  
 ```pip install bs4```
