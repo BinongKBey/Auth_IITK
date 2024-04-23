@@ -6,6 +6,8 @@ you need to install *bs4*, for installation just open your command prompt/ termi
  
 ```pip install bs4```
 
+Note: make sure you have pip3 installed. If not, install it using the command: ```sudo apt install python3-pip```
+
 You need to put your iitk username and password at given place in auth-iitk.py
 
 For Windows
