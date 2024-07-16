@@ -42,13 +42,14 @@ script_tag = parsed.find('script', {'language': 'JavaScript'})
 script_content = script_tag.string
 key = script_content.split('?')[1][:-2]
 url = 'https://gateway.iitk.ac.in:1003/keepalive?' + key
-time.sleep(2400)
+# time.sleep(2400)
+time.sleep(2350)
 
 while True:
     try:
         opener.open(url)
         print('Authentication refreshed... ')
-        time.sleep(2400)
+        time.sleep(2350)
     except:
         print('Cannot refresh the authentication ', url)
         time.sleep(10)
