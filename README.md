@@ -2,13 +2,6 @@
 
 This is a new updated code for auto login to IITK network
 
-Run the following commands by opening the terminal in your folder.
-
-### Prerequisites:
- - make sure you have pip3 installed. If not, install it using the command: ```sudo apt install python3-pip``` in terminal
- - Now, using pip3, you need to install *bs4* for installation (You can skip it if you have it). To install run: ```pip install bs4``` in terminal
- - Note: In some newer ubuntu systems, you need to ```sudo pip install bs4``` to make it work.
-
 ## Adding your login credentials
 You need to put your iitk username and password in auth-iitk.py (probably line no. 9 or 10)
 
@@ -24,7 +17,7 @@ Run ```python3 auth-iitk.py``` in the terminal, which will log you in and keep y
 
 You can run ```pythonw auth-iitk.py```
 
-## Alternate Once for all/Permanent (for linux only)- 
+# Alternate Once for all/Permanent (for linux only)- 
 
 You can setup a python Daemon
 
