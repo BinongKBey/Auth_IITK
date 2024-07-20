@@ -51,13 +51,13 @@ key_end = script_content.find("'", key_start)
 key = script_content[key_start:key_end]
 url = 'https://gateway.iitk.ac.in:1003/keepalive?' + key
 
-time.sleep(2000)
+time.sleep(600)
 
 while True:
     try:
         opener.open(url)
         print('Authentication refreshed... ')
-        time.sleep(2000)
+        time.sleep(600)
     except:
         print('Cannot refresh the authentication ', url)
         time.sleep(10)
