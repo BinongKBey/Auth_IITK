@@ -1,13 +1,12 @@
 import urllib.request
 import time
 import urllib.parse
-from bs4 import BeautifulSoup as Soup
 
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-Agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0')]
 
-username = 'Put your username here'
-password = 'Put your password here'
+username = ''
+password = ''
 
 check = True
 while check:
@@ -19,13 +18,18 @@ while check:
         time.sleep(2)
         print("Trying to connect to https://gateway.iitk.ac.in:1003")
 
-html = test.read()
-parsed = Soup(html, 'html.parser')
+html = test.read().decode('utf-8')
 
-data = {"4Tredir": "https://gateway.iitk.ac.in:1003/login?a7ae5f3cc31d8", "username": username, "password": password}
-form = parsed.findAll('form')[0]
-magic = form.findAll('input')[1]['value']
-data['magic'] = str(magic)
+# Extract the form action and magic value using string operations
+form_start = html.find('<form')
+form_end = html.find('</form>', form_start)
+form_content = html[form_start:form_end]
+
+magic_start = form_content.find('name="magic" value="') + len('name="magic" value="')
+magic_end = form_content.find('"', magic_start)
+magic = form_content[magic_start:magic_end]
+
+data = {"4Tredir": "https://gateway.iitk.ac.in:1003/login?a7ae5f3cc31d8", "username": username, "password": password, "magic": magic}
 
 time.sleep(2)
 login_data = urllib.parse.urlencode(data).encode('utf-8')
@@ -35,28 +39,25 @@ try:
 except:
     print('Cannot connect now')
 
-html = test.read()
+html = test.read().decode('utf-8')
 
-parsed = Soup(html, 'html.parser')
-script_tag = parsed.find('script', {'language': 'JavaScript'})
-script_content = script_tag.string
-key = script_content.split('?')[1][:-2]
+# Extract the keepalive URL using string operations
+script_start = html.find('<script language="JavaScript">') + len('<script language="JavaScript">')
+script_end = html.find('</script>', script_start)
+script_content = html[script_start:script_end]
+
+key_start = script_content.find('?') + 1
+key_end = script_content.find("'", key_start)
+key = script_content[key_start:key_end]
 url = 'https://gateway.iitk.ac.in:1003/keepalive?' + key
-# time.sleep(2400)
-time.sleep(2350)
+
+time.sleep(600)
 
 while True:
     try:
         opener.open(url)
         print('Authentication refreshed... ')
-        time.sleep(2350)
+        time.sleep(600)
     except:
         print('Cannot refresh the authentication ', url)
         time.sleep(10)
-
-
-
-
-
-
-
